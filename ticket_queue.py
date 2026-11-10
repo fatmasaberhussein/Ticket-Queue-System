@@ -2,9 +2,17 @@ class Queue:
 
     def __init__(self):
         self.items = []
+        self.next_ticket_number = 1
 
     def enqueue(self, item):
-        self.items.append(item)
+        ticket_number = self.next_ticket_number
+
+        ticket = {
+            "ticket_number": ticket_number,
+            "customer_name": item
+        }
+        self.items.append(ticket)
+        self.next_ticket_number += 1
 
     def dequeue(self):
         if self.is_empty():
